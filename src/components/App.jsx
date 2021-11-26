@@ -3,7 +3,7 @@ import "../styles/styles.scss"
 import Form from "./Pages/Form"
 import Courses from './Pages/Courses';
 import Course from "./Pages/Course"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import MainMenu from './Organisms/MainMenu'
 import History from './Pages/History'
 import Home from './Pages/Home';
@@ -12,21 +12,21 @@ import Users from './Pages/Users';
 const App = () => (
   <Router>
     <MainMenu />
-    <Switch>
-      <Route path="/" exact component={ Home } />
-      <Route path="/cursos/:id" component={ Course } />  
-      <Route path="/cursos" component={ Courses } />  
-      <Route path="/historial/:valor" component={ History } />  
-      <Route path="/historial" component={ History } />  
-      <Route path="/usuarios" component={ Users } />  
-      <Route path="/formulario" component={ () => <Form name="Página de contacto" /> } />
-      <Route component={() => (
+    <Routes>
+      <Route exact="true" path="/" element={ <Home/> } />
+      <Route path="/cursos" element={ <Courses/> } />  
+      <Route path="/cursos/:id" element={ <Course/> } />  
+      <Route path="/historial/:valor" element={ <History/> } />  
+      <Route path="/historial" element={ <History/> } />  
+      <Route path="/usuarios" element={ <Users/> } />  
+      <Route path="/formulario" element={ <Form name="Página de contacto" /> }/>
+      <Route element={() => (
         <div className="ed-grid">
           <h1>Error 404</h1>
           <span>Página no encontrada</span>  
         </div>
       )} />  
-    </Switch> 
+    </Routes> 
   </Router>
 )
 
