@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios";
-import useCourse from "../CustomHooks/useCourse";
+import React, { useState} from "react"
+import useCourseMatch from "../../hooks/useCourseMatch";
 
 const Course = ({ match }) => {
 
     const [comment, setComment] = useState("Sin comentarios")
-    const course = useCourse(match.params.id) 
+    const course = useCourseMatch(match.params.id) 
 
     const myComment = e => {
       setComment(e.target.value)
