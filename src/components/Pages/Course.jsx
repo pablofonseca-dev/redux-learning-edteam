@@ -1,14 +1,24 @@
 import React, { useState} from "react"
 import useCourseMatch from "../../hooks/useCourseMatch";
+import { useParams } from "react-router-dom";
 
-const Course = ({ match }) => {
-
+const Course = () => {
     const [comment, setComment] = useState("Sin comentarios")
-    const course = useCourseMatch(match.params.id) 
+
+    const {id} = useParams();
+      
+    const [course, error] = useCourseMatch(id);
 
     const myComment = e => {
       setComment(e.target.value)
     }
+
+    if(error) return (
+      <>
+        <h1>Hubo un error</h1>
+        <p style={{color: "#ff0000"}}>{error}</p>
+      </>
+    )
 
     return (
         <div className="ed-grid m-grid-3">

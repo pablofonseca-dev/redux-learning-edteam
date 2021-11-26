@@ -68,18 +68,11 @@ class Form extends Component {
     
     componentDidMount() {
         let element = document.getElementById("form-element")
-        console.log(element)
-
 
         this.intervaloFecha = setInterval(() => {
             this.cambiarFecha()
-            console.log(new Date())
         }, 1000)    
 
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        //console.log(prevState)
     }
 
     componentWillUnmount() {

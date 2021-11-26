@@ -15,8 +15,8 @@ const App = () => (
     <Routes>
       <Route exact="true" path="/" element={ <Home/> } />
       <Route path="/cursos" element={ <Courses/> } />  
-      <Route path="/cursos/:id" element={ <Course/> } />  
-      <Route path="/historial/:valor" element={ <History/> } />  
+      <Route path="/cursos/:id" element={<Course/>} />  
+      <Route path="/historial/:valor" element={<History/>} />  
       <Route path="/historial" element={ <History/> } />  
       <Route path="/usuarios" element={ <Users/> } />  
       <Route path="/formulario" element={ <Form name="Página de contacto" /> }/>
