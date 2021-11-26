@@ -6,23 +6,23 @@ class Form extends Component {
         super(props)
 
         this.state = {
-            name: "",
+            nombre: "",
             correo: "",
             fecha: new Date()
         }
 
-        this.changeName = this.changeName.bind(this)
+        this.cambiarNombre = this.cambiarNombre.bind(this)
         this.cambiarCorreo = this.cambiarCorreo.bind(this)
         this.cambiarFecha = this.cambiarFecha.bind(this)
     }
 
-    changeName(e) {
+    cambiarNombre(e) {
         this.setState({
-            name: e.target.value
+            nombre: e.target.value
         })
     }
 
-    cambiarCorreo(e) {
+    cambiarCorreo(e) {  
         this.setState({
             correo: e.target.value
         })
@@ -45,7 +45,7 @@ class Form extends Component {
                             <label>Nombre completo</label>
                             <input
                                 type="text"
-                                onChange={this.changeName} 
+                                onChange={this.cambiarNombre} 
                             />
                         </div>
                         <div className="form__item">

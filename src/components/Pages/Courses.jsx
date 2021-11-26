@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import axios from "axios";
 import CourseGrid from "../Organisms/CourseGrid";
-
+import {get} from 'axios';
 class Courses extends Component {
 
   constructor(props) {
@@ -13,10 +12,10 @@ class Courses extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://my-json-server.typicode.com/betoquiroga/json-db/cursos')
-    .then(resp => this.setState({
-      courses: resp.data
-    }))
+    const courses_request = get(process.env.REACT_APP_BASE_API_COURSES)
+    courses_request
+    .then(({data}) =>
+     this.setState({courses: data}));
   }
 
   render() {
