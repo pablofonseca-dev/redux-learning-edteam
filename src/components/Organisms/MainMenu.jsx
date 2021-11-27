@@ -1,5 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
+import CarCounter from "../Atom/CarCounter"
 
 const MainMenu = () => (
     <header className="main-header">
@@ -16,6 +17,7 @@ const MainMenu = () => (
                 <li><NavLink to="/cursos" className="activo"> Cursos </NavLink></li>
                 <li><NavLink to="/formulario" className="activo"> Formulario </NavLink></li>
                 <li><NavLink to="/usuarios" className="activo"> Usuarios </NavLink></li>
+                <CarCounter/>
             </ul>
           </nav>
           <div className="main-menu-toggle to-l" id="main-menu-toggle"></div>

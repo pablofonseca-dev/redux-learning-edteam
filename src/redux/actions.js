@@ -1,0 +1,7 @@
+const ADD_TO_CAR = "ADD_TO_CAR";
+const REMOVE_FROM_CAR = "REMOVE_FROM_CAR";
+
+export {
+    ADD_TO_CAR,
+    REMOVE_FROM_CAR
+}
