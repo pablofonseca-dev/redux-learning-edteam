@@ -1,9 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { addToCar, removeFromCar } from "../../redux/actionCreators";
-import { connect } from "react-redux";
-import { useState, useEffect } from "react";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { addToCar, removeFromCar } from '../../redux/actionCreators'
+import { connect } from 'react-redux'
 
 const CourseCard = ({
   id,
@@ -15,22 +14,6 @@ const CourseCard = ({
   removeCourseFromCar,
   car,
 }) => {
-  const [inCar, setInCar] = useState(false);
-
-  const handleInCar = () => {
-    if (!inCar) {
-      addCourseToCar(id);
-    } else {
-      removeCourseFromCar(id);
-    }
-  };
-
-  useEffect(() => {
-    const isInCar = car.find((a) => a === id);
-    console.log(isInCar);
-    setInCar(isInCar);
-  }, [car]);
-
   return (
     <article className="card">
       <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
@@ -42,43 +25,52 @@ const CourseCard = ({
         <h3 className="center">{title}</h3>
         <div className="s-main-center">{professor}</div>
         <div className="s-main-center">
-          <button
-            className="button--ghost-alert button--tiny"
-            onClick={handleInCar}
-          >
-            {inCar ? "Remover del carrito" : `$ ${price} USD`}
-          </button>
+          {!car.find((product) => product === id) ? (
+            <button
+              className="button ghost third-color button--tiny"
+              onClick={() => addCourseToCar(id)}
+            >
+              {`$ ${price} USD`}
+            </button>
+          ) : (
+            <button
+              className="button third-color button--tiny"
+              onClick={() => removeCourseFromCar(id)}
+            >
+              Remover del carrito
+            </button>
+          )}
         </div>
       </div>
     </article>
-  );
-};
+  )
+}
 
 CourseCard.propTypes = {
   title: PropTypes.string,
   image: PropTypes.string,
   price: PropTypes.number,
   profesor: PropTypes.string,
-};
+}
 
 CourseCard.defaultProps = {
-  title: "No se encontró título",
-  image: "http://www.ciudaddelapunta.com/sitio/fotos/ciudad/miniaturas/006.jpg",
-  price: "--",
-  profesor: "",
-};
+  title: 'No se encontró título',
+  image: 'http://www.ciudaddelapunta.com/sitio/fotos/ciudad/miniaturas/006.jpg',
+  price: '--',
+  profesor: '',
+}
 
 const mapStateToProps = (state) => ({
   car: state.car,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   addCourseToCar(id) {
-    dispatch(addToCar(id));
+    dispatch(addToCar(id))
   },
   removeCourseFromCar(id) {
-    dispatch(removeFromCar(id));
+    dispatch(removeFromCar(id))
   },
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(CourseCard);
+export default connect(mapStateToProps, mapDispatchToProps)(CourseCard)

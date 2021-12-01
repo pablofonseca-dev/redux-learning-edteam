@@ -1,29 +1,15 @@
-import React, { Component } from "react"
-import CourseGrid from "../Organisms/CourseGrid";
-import {get} from 'axios';
-class Courses extends Component {
+import React from 'react'
+import CourseGrid from '../Organisms/CourseGrid'
+import { connect } from 'react-redux'
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      courses: []
-    }
-  }
-
-  componentDidMount() {
-    const courses_request = get(process.env.REACT_APP_BASE_API_COURSES)
-    courses_request
-    .then(({data}) =>
-     this.setState({courses: data}));
-  }
-
-  render() {
-    const { courses } = this.state
-
-    return <CourseGrid courses={courses} />
-  }
-  
+const Courses = () => {
+  return <CourseGrid courses={courses} />
 }
 
-export default Courses
+const mapStateToProps = (state) => ({
+  courses: state.courses,
+})
+
+const mapDispatchToProps = () => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Courses)
